@@ -3,3 +3,4 @@ __pycache__
 expts
 *.vcf
 *.vcf.gz
+admixer/__pycache__
