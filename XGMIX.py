@@ -13,6 +13,8 @@ import xgboost as xgb
 from Admixture.Admixture import read_sample_map, split_sample_map, main_admixture
 from Admixture.utils import read_vcf, join_paths, run_shell_cmd
 
+from fast_Admixture.admix import simulate 
+
 from preprocess import load_np_data, data_process, vcf2npy, map2npy, get_gen_0
 from postprocess import vcf_to_npy, get_msp_data, write_msp_tsv
 from visualization import plot_cm
