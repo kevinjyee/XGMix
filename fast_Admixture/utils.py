@@ -8,7 +8,7 @@ import allel
 import pandas as pd
 import os
 
-from person import Person, create_new
+from .person import Person, create_new
 
 def get_chm_lengths(genetic_map):
 
@@ -180,7 +180,7 @@ def write_output(root,dataset):
     if not os.path.isdir(root):
         os.makedirs(root)
 
-    for gen in [0,2,3,4,5,6,7,8]:
+    for gen in dataset.keys():
         
         print("Writing generation: {}".format(gen))
 

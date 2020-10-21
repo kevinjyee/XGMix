@@ -12,20 +12,24 @@ Admix++
 import allel
 import sys
 
-from utils import build_founders, create_dataset, write_output
+from .utils import build_founders, create_dataset, write_output
 
-def simulate(reference, sample_map, genetic_map, out_root,
+def simulate(vcf_data, sample_map, genetic_map, out_root,
              num_samples_per_gen, gens_to_ret,
              sample_weights=None,random_seed=42):
 
     """
 
     out_root is modified to infer chromosome number, gen number. 
+    vcf_data: allel.read_vcf output
+    sample_map: Samples in the current split
+    genetic_map: Genetic map
+    out_root: Where output is stored. Needs to have chm name and split name.
+    num_samples_per_gen: Number of samples per generation to simulate.
+    gens_to_ret: Generations to return. Will output gen0 automatically.
 
     """
 
-    print("Reading vcf data")
-    vcf_data = allel.read_vcf(reference)
     print("Building founders")
     founders, founders_weight= build_founders(vcf_data, 
                                                sample_map, 
@@ -35,7 +39,6 @@ def simulate(reference, sample_map, genetic_map, out_root,
     print("Simulating...")
     dataset = create_dataset(founders,founders_weight,num_samples_per_gen,gens_to_ret,random_seed)
     print("Writing output")
-    out_root = out_root + "/chm"+str(chm)
     write_output(out_root,dataset)
 
 if __name__ == "__main__":
@@ -67,6 +70,9 @@ if __name__ == "__main__":
     if len(sys.argv) >= 9:
         sample_weights = sys.argv[8]
 
-    simulate(reference, sample_map, genetic_map, out_root,
+    print("Reading vcf data")
+    vcf_data = allel.read_vcf(reference)
+
+    simulate(vcf_data, sample_map, genetic_map, out_root,
              num_samples_per_gen, gens_to_ret,
              sample_weights,random_seed)
