@@ -39,7 +39,7 @@ np.random.seed(94305)
 class XGMIX():
 
     def __init__(self,chmlen,win,sws,num_anc,snp_pos=None,snp_ref=None,population_order=None, save=None,
-                base_params=[20,4],smooth_params=[200,4],cores=16,lr=0.1,reg_lambda=1,reg_alpha=0,model="xgb",
+                base_params=[20,4],smooth_params=[100,4],cores=16,lr=0.1,reg_lambda=1,reg_alpha=0,model="xgb",
                 mode_filter_size=5, calibrate=True):
 
         self.chmlen = chmlen

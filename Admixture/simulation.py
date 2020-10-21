@@ -33,7 +33,7 @@ def simulate(reference_file_bcf, sample_file, idx_to_pop_map, genetic_map_file,
              generations, num_out, sim_output_path, chm, use_phase_shift):
 
     # path to RFMix/simulate binary 
-    rfmix_sim_path = "./Admixture/simulate" 
+    rfmix_sim_path = "/home/arvindsk/XGMix/Admixture/simulate" 
 
     # assume everyone in the sample map is founder
     print("Creating founders.bcf.gz for {}".format(sample_file))
